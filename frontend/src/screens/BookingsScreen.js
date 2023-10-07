@@ -22,22 +22,28 @@ function BookingsScreen() {
 
     return (
         <div className="flex flex-col h-full items-center bg-gray-200 text-gray-700 px-6">
-            <h1 className="text-4xl mb-4">User {userId} Bookings</h1>
+            <h1 className="text-4xl mb-4">予約一覧</h1>
             {bookings.map(booking => (
                 <div key={booking.id} className="w-full flex justify-center mb-4">
                     <div className="flex p-4 border rounded bg-white shadow-md w-full md:w-2/3 lg:w-1/2">
                         <div className="w-full">
                             <h2 className="text-xl font-bold mb-2">{booking.room.room_number} - {booking.room.room_type}</h2>
-                            <p className="mb-1">Description: {booking.room.description}</p>
-                            <p className="mb-1">Booking Start Date: {booking.start_date}</p>
-                            <p className="mb-1">Booking End Date: {booking.end_date}</p>
-                            <p>Total Price: ${booking.total_price}</p>
+                            <p className="mb-1">部屋の説明: {booking.room.description}</p>
+                            <p className="mb-1">予約開始日: {booking.start_date}</p>
+                            <p className="mb-1">予約終了日: {booking.end_date}</p>
+                            <p>合計金額: ¥{booking.total_price}</p>
                         </div>
+                        <button
+                            className="mt-20 w-[100px] bg-red-500 text-white py-2 px-4 rounded hover:bg-red-600"
+                        >
+                            キャンセル
+                        </button>
                     </div>
                 </div>
             ))}
         </div>
     );
+
 }
 
 export default BookingsScreen;

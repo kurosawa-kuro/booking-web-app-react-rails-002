@@ -29,8 +29,9 @@ function Navbar() {
                             </div>
                         ) : (
                             <>
-                                <a href="/register" className="px-4 py-2 rounded bg-blue-600 hover:bg-blue-500">Register</a>
-                                <a href="/login" className="px-4 py-2 rounded bg-blue-600 hover:bg-blue-500">Login</a>
+                                <a href="/bookings" className="px-4 py-2 rounded bg-blue-600 hover:bg-blue-500">予約一覧</a>
+                                <a href="/register" className="px-4 py-2 rounded bg-blue-600 hover:bg-blue-500">ユーザー登録</a>
+                                <a href="/login" className="px-4 py-2 rounded bg-blue-600 hover:bg-blue-500">ユーザーログイン</a>
                             </>
                         )}
                     </div>

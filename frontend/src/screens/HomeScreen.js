@@ -21,20 +21,20 @@ function HomeScreen() {
 
     return (
         <div className="flex flex-col h-full items-center bg-gray-200 text-gray-700 px-6">
-            <h1 className="text-4xl mb-4">Room List</h1>
+            <h1 className="text-4xl mb-4">部屋一覧</h1>
             {rooms.map(room => (
                 <Link to={`/room/${room.id}`} key={room.id} className="w-full flex justify-center mb-4">
                     <div className="flex p-4 border rounded bg-white shadow-md w-full md:w-2/3 lg:w-1/2">
                         <img
                             src="https://static.amanaimages.com/imgroom/rf_preview640/11014/11014019870.jpg"
-                            alt={`Room ${room.room_number} ${room.room_type}`}
+                            alt={`部屋 ${room.room_number} ${room.room_type}`}
                             className="w-1/3 object-cover rounded-md mr-3"
                         />
                         <div className="w-2/3">
                             <h2 className="text-xl font-bold mb-2">{room.room_number} - {room.room_type}</h2>
-                            <p className="mb-1">Description: {room.description}</p>
-                            <p className="mb-1">Capacity: {room.capacity}</p>
-                            <p>Price per night: ${room.price_per_night}</p>
+                            <p className="mb-1">説明: {room.description}</p>
+                            <p className="mb-1">定員: {room.capacity}人</p>
+                            <p>1泊あたりの価格: ¥{room.price_per_night}</p>
                         </div>
                     </div>
                 </Link>
