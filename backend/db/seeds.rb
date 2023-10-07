@@ -1,24 +1,22 @@
-# db/seeds.rb
-
 # Users
 User.create!(
   name: 'John Doe',
   email: 'john.doe@example.com',
-  password_digest: 'password',
+  password: 'password',
   admin: true
 )
 
 User.create!(
   name: 'Jane Smith',
   email: 'jane.smith@example.com',
-  password_digest: 'password',
+  password: 'password',
   admin: false
 )
 
 User.create!(
   name: 'Alice Johnson',
   email: 'alice.johnson@example.com',
-  password_digest: 'password',
+  password: 'password',
   admin: false
 )
 
