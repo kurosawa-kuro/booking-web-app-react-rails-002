@@ -12,7 +12,7 @@ function Navbar() {
         <div className="bg-gray-800 text-white py-4">
             <div className="container mx-auto">
                 <div className="flex justify-between items-center">
-                    <a href="/" className="text-2xl font-bold">Shey Rooms</a>
+                    <a href="/" className="text-2xl font-bold">黒さん予約アプリ</a>
                     <div className="space-x-4">
                         {localStorage.getItem('currentUser') ? (
                             <div className="relative inline-block text-left">
