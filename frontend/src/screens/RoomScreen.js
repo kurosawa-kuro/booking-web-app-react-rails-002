@@ -23,6 +23,10 @@ function RoomScreen() {
 
     if (!room) return <div>Loading...</div>;
 
+    const handleButtonClick = () => {
+        console.log('ボタンが押されました');
+    };
+
     return (
         <div className="flex flex-col h-screen items-center bg-gray-200 text-gray-700">
             <h1 className="text-4xl mb-4">Room</h1>
@@ -40,7 +44,9 @@ function RoomScreen() {
                         <p>Price per night: ${room.price_per_night}</p>
                     </div>
                     <div className="w-1/2 flex items-center justify-center">
-                        <button className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600">
+                        <button
+                            onClick={handleButtonClick}
+                            className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600">
                             予約する
                         </button>
                     </div>
@@ -48,7 +54,6 @@ function RoomScreen() {
             </div>
         </div>
     );
-
 }
 
 export default RoomScreen;
