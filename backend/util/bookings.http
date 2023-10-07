@@ -1,0 +1,19 @@
+### Get All Bookings
+GET http://localhost:3001/bookings
+
+### Get a Specific Booking
+GET http://localhost:3001/bookings/1
+
+### Create a New Booking
+POST http://localhost:3001/bookings
+Content-Type: application/json
+
+{
+  "room_id": 1,
+  "user_id": 1,
+  "from_date": "2023-10-05",
+  "to_date": "2023-10-10",
+  "total_days": 5,
+  "total_amount": 500.0,
+  "status": "booked"
+}

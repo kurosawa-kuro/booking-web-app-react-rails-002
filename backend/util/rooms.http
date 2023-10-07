@@ -1,0 +1,19 @@
+### Fetch all rooms
+GET http://localhost:3001/rooms
+
+### Fetch a specific room by ID (example ID: 1)
+GET http://localhost:3001/rooms/1
+
+### Create a new room
+POST http://localhost:3001/rooms
+Content-Type: application/json
+
+{
+  "name": "Example Room",
+  "description": "This is a sample room for demonstration purposes.",
+  "image_url": "http://example.com/image.jpg",
+  "max_count": 4,
+  "phone_number": "123-456-7890",
+  "rent_per_day": 100.50,
+  "room_type": "Single"
+}

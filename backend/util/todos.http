@@ -1,0 +1,16 @@
+@baseUrl = http://localhost:3001
+
+### Todo Actions
+
+#### Create a new Todo
+# @name createTodo
+POST  {{baseUrl}}/todos
+Content-Type: application/json
+
+{
+  "title": "abc"
+}
+
+#### Get all Todos
+# @name getTodos
+GET  {{baseUrl}}/todos
