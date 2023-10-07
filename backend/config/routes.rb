@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :tags
   scope 'auth' do
     post 'register', to: 'auth#register'
     post 'login', to: 'auth#login'
