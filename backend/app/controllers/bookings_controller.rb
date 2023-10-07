@@ -1,12 +1,17 @@
 class BookingsController < ApplicationController
   before_action :set_booking, only: %i[ show update destroy ]
 
-  # GET /bookings
+  # GET /bookings or /users/:user_id/bookings
   def index
-    @bookings = Booking.all
+    if params[:user_id]
+      @bookings = Booking.includes(:room).where(user_id: params[:user_id])
+    else
+      @bookings = Booking.all.includes(:room)
+    end
 
-    render json: @bookings
+    render json: @bookings.as_json(include: :room)
   end
+
 
   # GET /bookings/1
   def show

@@ -5,7 +5,11 @@ Rails.application.routes.draw do
     delete 'logout', to: 'auth#logout'
   end
 
-  resources :bookings
   resources :rooms
-  resources :users
+
+  resources :users do
+    resources :bookings, only: [:index]
+  end
+  
+  resources :bookings, except: [:index] # :indexを除外
 end
