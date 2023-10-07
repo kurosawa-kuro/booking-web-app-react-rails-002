@@ -5,7 +5,6 @@ import { useParams } from 'react-router-dom';
 function RoomScreen() {
     const [room, setRoom] = useState(null);
     const baseUrl = 'http://localhost:3001';
-
     const { id } = useParams();
 
     useEffect(() => {
@@ -21,11 +20,29 @@ function RoomScreen() {
         fetchRoom();
     }, [id]);
 
-    if (!room) return <div>Loading...</div>;
-
-    const handleButtonClick = () => {
+    const handleButtonClick = async () => {
         console.log('ボタンが押されました');
+
+        // 予約の情報
+        const bookingData = {
+            booking: {
+                user_id: 1,
+                room_id: parseInt(id), // useParamsから取得したidを整数として使用
+                start_date: "2023-10-10",
+                end_date: "2023-10-20",
+                total_price: 200.50
+            }
+        };
+
+        try {
+            const response = await axios.post(`${baseUrl}/bookings`, bookingData);
+            console.log('Booking Response:', response.data);
+        } catch (error) {
+            console.error('Error making booking:', error);
+        }
     };
+
+    if (!room) return <div>Loading...</div>;
 
     return (
         <div className="flex flex-col h-screen items-center bg-gray-200 text-gray-700">
