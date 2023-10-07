@@ -1,46 +1,124 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import axios from 'axios';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
-function HomeScreen() {
-    const [rooms, setRooms] = useState([]);
+function RoomFormScreen() {
+    const [roomData, setRoomData] = useState({
+        room_number: "",
+        description: "",
+        capacity: 0,
+        price_per_night: 0.0,
+        room_type: ""
+    });
+
     const baseUrl = 'http://localhost:3001';
+    const navigate = useNavigate();
 
-    useEffect(() => {
-        async function fetchRooms() {
-            try {
-                const response = await axios.get(`${baseUrl}/rooms`);
-                setRooms(response.data);
-            } catch (error) {
-                console.error("Error fetching rooms:", error);
-            }
+    const handleInputChange = (e) => {
+        const { name, value } = e.target;
+        setRoomData(prevState => ({
+            ...prevState,
+            [name]: value
+        }));
+    };
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        try {
+            await axios.post(`${baseUrl}/rooms`, { room: roomData });
+            navigate('/admin/rooms');
+        } catch (error) {
+            console.error("Error creating room:", error);
         }
-
-        fetchRooms();
-    }, []);
+    };
 
     return (
         <div className="flex flex-col h-full items-center bg-gray-200 text-gray-700 px-6">
-            <h1 className="text-4xl mb-4">部屋一覧</h1>
-            {rooms.map(room => (
-                <Link to={`/room/${room.id}`} key={room.id} className="w-full flex justify-center mb-4">
-                    <div className="flex p-4 border rounded bg-white shadow-md w-full md:w-2/3 lg:w-1/2">
-                        <img
-                            src="https://static.amanaimages.com/imgroom/rf_preview640/11014/11014019870.jpg"
-                            alt={`部屋 ${room.room_number} ${room.room_type}`}
-                            className="w-1/3 object-cover rounded-md mr-3"
-                        />
-                        <div className="w-2/3">
-                            <h2 className="text-xl font-bold mb-2">{room.room_number} - {room.room_type}</h2>
-                            <p className="mb-1">説明: {room.description}</p>
-                            <p className="mb-1">定員: {room.capacity}人</p>
-                            <p>1泊あたりの価格: ¥{room.price_per_night}</p>
-                        </div>
-                    </div>
-                </Link>
-            ))}
+            <h1 className="text-4xl mb-4">部屋 新規作成</h1>
+            <form onSubmit={handleSubmit} className="w-1/2">
+                <div className="mb-4">
+                    <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="room_number">
+                        部屋番号
+                    </label>
+                    <input
+                        type="text"
+                        id="room_number"
+                        name="room_number"
+                        value={roomData.room_number}
+                        onChange={handleInputChange}
+                        className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                        placeholder="部屋番号"
+                    />
+                </div>
+
+                <div className="mb-4">
+                    <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="description">
+                        説明
+                    </label>
+                    <textarea
+                        id="description"
+                        name="description"
+                        value={roomData.description}
+                        onChange={handleInputChange}
+                        className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                        placeholder="部屋の説明"
+                    />
+                </div>
+
+                <div className="mb-4">
+                    <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="capacity">
+                        定員
+                    </label>
+                    <input
+                        type="number"
+                        id="capacity"
+                        name="capacity"
+                        value={roomData.capacity}
+                        onChange={handleInputChange}
+                        className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                        placeholder="定員数"
+                    />
+                </div>
+
+                <div className="mb-4">
+                    <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="price_per_night">
+                        1泊あたりの価格
+                    </label>
+                    <input
+                        type="number"
+                        step="0.01"
+                        id="price_per_night"
+                        name="price_per_night"
+                        value={roomData.price_per_night}
+                        onChange={handleInputChange}
+                        className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                        placeholder="1泊あたりの価格"
+                    />
+                </div>
+
+                <div className="mb-4">
+                    <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="room_type">
+                        部屋のタイプ
+                    </label>
+                    <input
+                        type="text"
+                        id="room_type"
+                        name="room_type"
+                        value={roomData.room_type}
+                        onChange={handleInputChange}
+                        className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                        placeholder="部屋のタイプ (例: シングル)"
+                    />
+                </div>
+
+                <div className="flex items-center justify-between">
+                    <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">
+                        作成
+                    </button>
+                </div>
+            </form>
         </div>
     );
 }
 
-export default HomeScreen;
+export default RoomFormScreen;

@@ -21,7 +21,7 @@ function HomeScreen() {
 
     return (
         <div className="flex flex-col h-full items-center bg-gray-200 text-gray-700 px-6">
-            <h1 className="text-4xl mb-4">部屋一覧</h1>
+            <h1 className="text-4xl mb-4">部屋一覧 By Admin</h1>
             {rooms.map(room => (
                 <Link to={`/room/${room.id}`} key={room.id} className="w-full flex justify-center mb-4">
                     <div className="flex p-4 border rounded bg-white shadow-md w-full md:w-2/3 lg:w-1/2">
