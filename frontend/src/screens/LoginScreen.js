@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import { useAuthStore } from "../state/store";
 
 function LoginScreen() {
+    const setUserInfo = useAuthStore(state => state.setUserInfo);
     const [credentials, setCredentials] = useState({
         email: "",
         password: ""
@@ -23,7 +25,7 @@ function LoginScreen() {
         try {
             const response = await axios.post(`${baseUrl}/auth/login`, credentials);
             // Save token or user data to state or local storage here if needed
-            console.log(response.data);
+            setUserInfo(response.data);
             navigate('/'); // Redirect to rooms after successful login
         } catch (error) {
             console.error("Error during login:", error);
