@@ -20,7 +20,15 @@ function Navbar() {
                     <div className="space-x-4">
                         {localStorage.getItem('userInfo') ? (
                             <>
+
                                 <a href="/admin/users" className="transition-colors duration-200 px-4 py-2 rounded bg-blue-600 hover:bg-blue-500 focus:bg-blue-700 focus:outline-none">ユーザー一覧</a>
+                                <a href="/admin/bookings" className="transition-colors duration-200 px-4 py-2 rounded bg-blue-600 hover:bg-blue-500 focus:bg-blue-700 focus:outline-none">予約一覧</a>
+                                <a href="/admin/rooms" className="transition-colors duration-200 px-4 py-2 rounded bg-blue-600 hover:bg-blue-500 focus:bg-blue-700 focus:outline-none">部屋一覧</a>
+                                <a href="/admin/rooms/new" className="transition-colors duration-200 px-4 py-2 rounded bg-blue-600 hover:bg-blue-500 focus:bg-blue-700 focus:outline-none">部屋新規作成</a>
+                                <a href="/admin/tags" className="transition-colors duration-200 px-4 py-2 rounded bg-blue-600 hover:bg-blue-500 focus:bg-blue-700 focus:outline-none">タグ一覧</a>
+                                <a href="/admin/tags/new" className="transition-colors duration-200 px-4 py-2 rounded bg-blue-600 hover:bg-blue-500 focus:bg-blue-700 focus:outline-none">タグ新規作成</a>
+                                <a href="/bookings" className="transition-colors duration-200 px-4 py-2 rounded bg-blue-600 hover:bg-blue-500 focus:bg-blue-700 focus:outline-none">予約一覧</a>
+
                                 <span className="bg-yellow-500 px-3 py-1 rounded-lg shadow-md">
                                     {JSON.parse(localStorage.getItem('userInfo')).email}
                                 </span>
@@ -29,13 +37,6 @@ function Navbar() {
                             </>
                         ) : (
                             <>
-                                <a href="/admin/users" className="transition-colors duration-200 px-4 py-2 rounded bg-blue-600 hover:bg-blue-500 focus:bg-blue-700 focus:outline-none">ユーザー一覧</a>
-                                <a href="/admin/bookings" className="transition-colors duration-200 px-4 py-2 rounded bg-blue-600 hover:bg-blue-500 focus:bg-blue-700 focus:outline-none">予約一覧</a>
-                                <a href="/admin/rooms" className="transition-colors duration-200 px-4 py-2 rounded bg-blue-600 hover:bg-blue-500 focus:bg-blue-700 focus:outline-none">部屋一覧</a>
-                                <a href="/admin/rooms/new" className="transition-colors duration-200 px-4 py-2 rounded bg-blue-600 hover:bg-blue-500 focus:bg-blue-700 focus:outline-none">部屋新規作成</a>
-                                <a href="/admin/tags" className="transition-colors duration-200 px-4 py-2 rounded bg-blue-600 hover:bg-blue-500 focus:bg-blue-700 focus:outline-none">タグ一覧</a>
-                                <a href="/admin/tags/new" className="transition-colors duration-200 px-4 py-2 rounded bg-blue-600 hover:bg-blue-500 focus:bg-blue-700 focus:outline-none">タグ新規作成</a>
-                                <a href="/bookings" className="transition-colors duration-200 px-4 py-2 rounded bg-blue-600 hover:bg-blue-500 focus:bg-blue-700 focus:outline-none">予約一覧</a>
                                 <a href="/register" className="transition-colors duration-200 px-4 py-2 rounded bg-blue-600 hover:bg-blue-500 focus:bg-blue-700 focus:outline-none">ユーザー登録</a>
                                 <a href="/login" className="transition-colors duration-200 px-4 py-2 rounded bg-blue-600 hover:bg-blue-500 focus:bg-blue-700 focus:outline-none">ユーザーログイン</a>
                             </>
