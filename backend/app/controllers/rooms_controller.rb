@@ -1,16 +1,15 @@
 class RoomsController < ApplicationController
-  before_action :set_room, only: %i[ show update destroy ]
+  before_action :set_room, only: [:show, :update, :destroy]
 
   # GET /rooms
   def index
-    @rooms = Room.all
-
-    render json: @rooms
+    @rooms = Room.includes(:tags)
+    render json: @rooms.as_json(include: { tags: { only: [:id, :name, :created_at, :updated_at] } })
   end
 
   # GET /rooms/1
   def show
-    render json: @room
+    render json: @room.as_json(include: { tags: { only: [:id, :name, :created_at, :updated_at] } })
   end
 
   # POST /rooms
@@ -18,7 +17,7 @@ class RoomsController < ApplicationController
     @room = Room.new(room_params)
 
     if @room.save
-      render json: @room, status: :created, location: @room
+      render json: @room.as_json(include: { tags: { only: [:id, :name, :created_at, :updated_at] } }), status: :created, location: @room
     else
       render json: @room.errors, status: :unprocessable_entity
     end
@@ -27,7 +26,7 @@ class RoomsController < ApplicationController
   # PATCH/PUT /rooms/1
   def update
     if @room.update(room_params)
-      render json: @room
+      render json: @room.as_json(include: { tags: { only: [:id, :name, :created_at, :updated_at] } })
     else
       render json: @room.errors, status: :unprocessable_entity
     end
@@ -39,13 +38,14 @@ class RoomsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_room
-      @room = Room.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def room_params
-      params.require(:room).permit(:room_number, :description, :capacity, :price_per_night, :room_type)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_room
+    @room = Room.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def room_params
+    params.require(:room).permit(:room_number, :description, :capacity, :price_per_night, :room_type)
+  end
 end

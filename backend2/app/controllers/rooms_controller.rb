@@ -3,10 +3,9 @@ class RoomsController < ApplicationController
 
   # GET /rooms
   def index
-    @rooms = Room.all
-
-    render json: @rooms
-  end
+    @rooms = Room.all.includes(:tags)
+    render json: @rooms.to_json(include: [:tags])
+end
 
   # GET /rooms/1
   def show
