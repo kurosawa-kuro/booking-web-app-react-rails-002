@@ -3,20 +3,20 @@
 # Users
 user_attributes = [
   {
-    name: 'John Doe',
-    email: 'john.doe@example.com',
+    name: 'admin User',
+    email: 'admin@example.com',
     password: 'password',
     admin: true
   },
   {
-    name: 'Jane Smith',
-    email: 'jane.smith@example.com',
+    name: 'Kurosawa Toshifumi',
+    email: 'kurosawa@example.com',
     password: 'password',
     admin: false
   },
   {
-    name: 'Alice Johnson',
-    email: 'alice.johnson@example.com',
+    name: 'Taro Yamada',
+    email: 'yamada@example.com',
     password: 'password',
     admin: false
   }
