@@ -24,20 +24,19 @@ function LoginScreen() {
         e.preventDefault();
         try {
             const response = await axios.post(`${baseUrl}/auth/login`, credentials);
-            // Save token or user data to state or local storage here if needed
             setUserInfo(response.data);
-            navigate('/'); // Redirect to rooms after successful login
+            navigate('/');
         } catch (error) {
             console.error("Error during login:", error);
         }
     };
 
     return (
-        <div className="flex flex-col h-full items-center bg-gray-200 text-gray-700 px-6">
+        <div className="flex flex-col h-full items-center bg-custom-blue-lightest text-custom-blue-darker px-6">
             <h1 className="text-4xl mb-4">ログイン</h1>
             <form onSubmit={handleSubmit} className="w-1/2">
                 <div className="mb-4">
-                    <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="email">
+                    <label className="block text-custom-blue-dark text-sm font-bold mb-2" htmlFor="email">
                         メールアドレス
                     </label>
                     <input
@@ -46,12 +45,12 @@ function LoginScreen() {
                         name="email"
                         value={credentials.email}
                         onChange={handleInputChange}
-                        className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                        className="shadow appearance-none border rounded w-full py-2 px-3 text-custom-blue-dark leading-tight focus:outline-none focus:shadow-outline"
                         placeholder="メールアドレス"
                     />
                 </div>
                 <div className="mb-4">
-                    <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="password">
+                    <label className="block text-custom-blue-dark text-sm font-bold mb-2" htmlFor="password">
                         パスワード
                     </label>
                     <input
@@ -60,12 +59,12 @@ function LoginScreen() {
                         name="password"
                         value={credentials.password}
                         onChange={handleInputChange}
-                        className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                        className="shadow appearance-none border rounded w-full py-2 px-3 text-custom-blue-dark leading-tight focus:outline-none focus:shadow-outline"
                         placeholder="パスワード"
                     />
                 </div>
                 <div className="flex items-center justify-between">
-                    <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">
+                    <button className="bg-custom-blue hover:bg-custom-blue-dark text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">
                         ログイン
                     </button>
                 </div>

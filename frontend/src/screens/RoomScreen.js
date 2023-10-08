@@ -51,9 +51,9 @@ function RoomScreen() {
     if (!room) return <div>Loading...</div>;
 
     return (
-        <div className="flex flex-col h-screen items-center bg-gray-200 text-gray-700">
+        <div className="flex flex-col h-screen items-center bg-custom-blue-lightest text-custom-blue-darkest">
             <h1 className="text-4xl mb-4">部屋</h1>
-            <div className="flex flex-col items-center mb-4 p-4 border rounded bg-white shadow-md w-1/2">
+            <div className="flex flex-col items-center mb-4 p-4 border rounded bg-custom-blue-lighter shadow-md w-1/2">
                 <img
                     src={room.image_path}
                     alt={`部屋 ${room.room_number} ${room.room_type}`}
@@ -61,14 +61,14 @@ function RoomScreen() {
                 />
                 <div className="w-3/4 flex gap-36">
                     <div className="w-1/2">
-                        <h2 className="text-xl font-bold">{room.room_number} - {room.room_type}</h2>
+                        <h2 className="text-xl font-bold text-custom-blue-dark">{room.room_number} - {room.room_type}</h2>
                         <p>説明: {room.description}</p>
                         <p>定員: {room.capacity}人</p>
                         <p>1泊あたりの価格: ¥{room.price_per_night}</p>
                         <div className="mt-2">
-                            <span className="font-semibold">タグ:</span>
+                            <span className="font-semibold text-custom-blue-dark">タグ:</span>
                             {room && room.tags && room.tags.map(tag => (
-                                <span key={tag.id} className="bg-green-200 text-green-800 rounded-full px-2 py-1 ml-2">
+                                <span key={tag.id} className="bg-custom-blue text-custom-blue-darkest rounded-full px-2 py-1 ml-2">
                                     {tag.name}
                                 </span>
                             ))}
@@ -77,7 +77,7 @@ function RoomScreen() {
                     <div className="w-1/2 flex items-center justify-center">
                         <button
                             onClick={handleButtonClick}
-                            className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600">
+                            className="px-4 py-2 bg-custom-blue-dark text-white rounded hover:bg-custom-blue-darker">
                             予約する
                         </button>
                     </div>
