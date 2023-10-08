@@ -62,7 +62,7 @@ function RoomFormScreen() {
     };
 
     return (
-        <div className="flex flex-col h-full items-center bg-gray-200 text-gray-700 px-6">
+        <div className="flex flex-col h-full items-center bg-custom-blue-lightest text-gray-700 px-6">
             <h1 className="text-4xl mb-4">部屋 新規作成</h1>
             <form onSubmit={handleSubmit} className="w-1/2">
                 <div className="mb-4">
@@ -144,14 +144,14 @@ function RoomFormScreen() {
                             key={tag.id}
                             type="button"
                             onClick={() => handleTagToggle(tag.id)}
-                            className={`py-2 px-4 m-2 rounded ${roomData.tag_ids.includes(tag.id) ? 'bg-blue-500' : 'bg-gray-400'}`}
+                            className={`py-2 px-4 m-2 rounded ${roomData.tag_ids.includes(tag.id) ? 'bg-custom-blue-dark text-white' : 'bg-custom-blue-light'}`}
                         >
                             {tag.name}
                         </button>
                     ))}
                 </div>
                 <div className="flex items-center justify-between">
-                    <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">
+                    <button className="bg-custom-blue hover:bg-custom-blue-dark text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">
                         作成
                     </button>
                 </div>

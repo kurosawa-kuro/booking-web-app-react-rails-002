@@ -38,7 +38,7 @@ function HomeScreen() {
                             <div className="mt-2">
                                 <span className="font-semibold text-custom-blue-dark">タグ:</span>
                                 {room.tags.map(tag => (
-                                    <span key={tag.id} className="bg-custom-blue text-custom-blue-darkest rounded-full px-2 py-1 ml-2">
+                                    <span key={tag.id} className="bg-custom-blue text-white rounded-full px-2 py-1 ml-2">
                                         {tag.name}
                                     </span>
                                 ))}
