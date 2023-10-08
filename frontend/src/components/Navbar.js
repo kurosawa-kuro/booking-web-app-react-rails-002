@@ -24,15 +24,13 @@ function Navbar() {
                             <>
                                 {isAdmin ? (
                                     <>
-                                        {["ユーザー一覧", "予約一覧", "部屋一覧", "部屋新規作成", "タグ一覧", "タグ新規作成"].map((text, index) => (
-                                            <a
-                                                key={index}
-                                                href={`/admin/${text.replace(" ", "").toLowerCase()}`}
-                                                className="bg-custom-orange hover:bg-custom-orange-dark text-custom-orange-lightest font-bold px-4 py-2 rounded focus:outline-none focus:shadow-outline transition-colors duration-200"
-                                            >
-                                                {text}
-                                            </a>
-                                        ))}
+                                        <a href="/admin/users" className="bg-custom-orange hover:bg-custom-orange-dark text-custom-orange-lightest font-bold px-4 py-2 rounded focus:outline-none focus:shadow-outline transition-colors duration-200">ユーザー一覧</a>
+                                        <a href="/admin/bookings" className="bg-custom-orange hover:bg-custom-orange-dark text-custom-orange-lightest font-bold px-4 py-2 rounded focus:outline-none focus:shadow-outline transition-colors duration-200">予約一覧</a>
+                                        <a href="/admin/rooms" className="bg-custom-orange hover:bg-custom-orange-dark text-custom-orange-lightest font-bold px-4 py-2 rounded focus:outline-none focus:shadow-outline transition-colors duration-200">部屋一覧</a>
+                                        <a href="/admin/rooms/new" className="bg-custom-orange hover:bg-custom-orange-dark text-custom-orange-lightest font-bold px-4 py-2 rounded focus:outline-none focus:shadow-outline transition-colors duration-200">部屋新規作成</a>
+                                        <a href="/admin/tags" className="bg-custom-orange hover:bg-custom-orange-dark text-custom-orange-lightest font-bold px-4 py-2 rounded focus:outline-none focus:shadow-outline transition-colors duration-200">タグ一覧</a>
+                                        <a href="/admin/tags/new" className="bg-custom-orange hover:bg-custom-orange-dark text-custom-orange-lightest font-bold px-4 py-2 rounded focus:outline-none focus:shadow-outline transition-colors duration-200">タグ新規作成</a>
+
                                     </>
                                 ) : (
                                     <a href="/bookings" className="transition-colors duration-200 px-4 py-2 text-black rounded bg-custom-orange-light hover:bg-custom-orange-dark focus:bg-custom-orange-darker focus:outline-none">予約一覧</a>

@@ -9,7 +9,7 @@ function RoomFormScreen() {
         capacity: 0,
         price_per_night: 0.0,
         room_type: "",
-        image_path: "",  // これを追加
+        image_path: "",
         tag_ids: []
     });
     const [tags, setTags] = useState([]);
@@ -63,11 +63,12 @@ function RoomFormScreen() {
     };
 
     return (
-        <div className="flex flex-col h-full items-center bg-custom-blue-lightest text-gray-700 px-6">
+        <div className="flex flex-col h-full items-center bg-custom-orange-lightest text-custom-orange-darker px-6">
             <h1 className="text-4xl mb-4">部屋 新規作成</h1>
             <form onSubmit={handleSubmit} className="w-1/2">
+                {/* 以下、各inputやlabelのスタイリング部分を変更 */}
                 <div className="mb-4">
-                    <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="room_number">
+                    <label className="block text-custom-orange-dark text-sm font-bold mb-2" htmlFor="room_number">
                         部屋番号
                     </label>
                     <input
@@ -76,12 +77,13 @@ function RoomFormScreen() {
                         name="room_number"
                         value={roomData.room_number}
                         onChange={handleInputChange}
-                        className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                        className="shadow appearance-none border rounded w-full py-2 px-3 text-custom-orange-dark leading-tight focus:outline-none focus:shadow-outline"
                         placeholder="部屋番号"
                     />
                 </div>
+
                 <div className="mb-4">
-                    <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="description">
+                    <label className="block text-custom-orange-dark text-sm font-bold mb-2" htmlFor="description">
                         説明
                     </label>
                     <textarea
@@ -89,12 +91,13 @@ function RoomFormScreen() {
                         name="description"
                         value={roomData.description}
                         onChange={handleInputChange}
-                        className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                        className="shadow appearance-none border rounded w-full py-2 px-3 text-custom-orange-dark leading-tight focus:outline-none focus:shadow-outline"
                         placeholder="部屋の説明"
                     />
                 </div>
+
                 <div className="mb-4">
-                    <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="capacity">
+                    <label className="block text-custom-orange-dark text-sm font-bold mb-2" htmlFor="capacity">
                         定員
                     </label>
                     <input
@@ -103,12 +106,13 @@ function RoomFormScreen() {
                         name="capacity"
                         value={roomData.capacity}
                         onChange={handleInputChange}
-                        className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                        className="shadow appearance-none border rounded w-full py-2 px-3 text-custom-orange-dark leading-tight focus:outline-none focus:shadow-outline"
                         placeholder="定員数"
                     />
                 </div>
+
                 <div className="mb-4">
-                    <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="price_per_night">
+                    <label className="block text-custom-orange-dark text-sm font-bold mb-2" htmlFor="price_per_night">
                         1泊あたりの価格
                     </label>
                     <input
@@ -118,12 +122,13 @@ function RoomFormScreen() {
                         name="price_per_night"
                         value={roomData.price_per_night}
                         onChange={handleInputChange}
-                        className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                        className="shadow appearance-none border rounded w-full py-2 px-3 text-custom-orange-dark leading-tight focus:outline-none focus:shadow-outline"
                         placeholder="1泊あたりの価格"
                     />
                 </div>
+
                 <div className="mb-4">
-                    <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="room_type">
+                    <label className="block text-custom-orange-dark text-sm font-bold mb-2" htmlFor="room_type">
                         部屋のタイプ
                     </label>
                     <input
@@ -132,12 +137,13 @@ function RoomFormScreen() {
                         name="room_type"
                         value={roomData.room_type}
                         onChange={handleInputChange}
-                        className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                        className="shadow appearance-none border rounded w-full py-2 px-3 text-custom-orange-dark leading-tight focus:outline-none focus:shadow-outline"
                         placeholder="部屋のタイプ (例: シングル)"
                     />
                 </div>
+
                 <div className="mb-4">
-                    <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="image_path">
+                    <label className="block text-custom-orange-dark text-sm font-bold mb-2" htmlFor="image_path">
                         画像パス
                     </label>
                     <input
@@ -146,12 +152,13 @@ function RoomFormScreen() {
                         name="image_path"
                         value={roomData.image_path}
                         onChange={handleInputChange}
-                        className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                        className="shadow appearance-none border rounded w-full py-2 px-3 text-custom-orange-dark leading-tight focus:outline-none focus:shadow-outline"
                         placeholder="画像のURL"
                     />
                 </div>
+
                 <div className="mb-4">
-                    <label className="block text-gray-700 text-sm font-bold mb-2">
+                    <label className="block text-custom-orange-dark text-sm font-bold mb-2">
                         タグ
                     </label>
                     {tags.map(tag => (
@@ -159,14 +166,15 @@ function RoomFormScreen() {
                             key={tag.id}
                             type="button"
                             onClick={() => handleTagToggle(tag.id)}
-                            className={`py-2 px-4 m-2 rounded ${roomData.tag_ids.includes(tag.id) ? 'bg-custom-blue-dark text-white' : 'bg-custom-blue-light'}`}
+                            className={`py-2 px-4 m-2 rounded ${roomData.tag_ids.includes(tag.id) ? 'bg-custom-orange-dark text-custom-orange-lightest' : 'bg-custom-orange-light text-custom-orange-darker'}`}
                         >
                             {tag.name}
                         </button>
                     ))}
                 </div>
+
                 <div className="flex items-center justify-between">
-                    <button className="bg-custom-blue hover:bg-custom-blue-dark text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">
+                    <button className="bg-custom-orange hover:bg-custom-orange-dark text-custom-orange-lightest font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">
                         作成
                     </button>
                 </div>
