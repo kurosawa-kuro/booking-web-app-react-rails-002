@@ -9,6 +9,7 @@ function RoomFormScreen() {
         capacity: 0,
         price_per_night: 0.0,
         room_type: "",
+        image_path: "",  // これを追加
         tag_ids: []
     });
     const [tags, setTags] = useState([]);
@@ -133,6 +134,20 @@ function RoomFormScreen() {
                         onChange={handleInputChange}
                         className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                         placeholder="部屋のタイプ (例: シングル)"
+                    />
+                </div>
+                <div className="mb-4">
+                    <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="image_path">
+                        画像パス
+                    </label>
+                    <input
+                        type="text"
+                        id="image_path"
+                        name="image_path"
+                        value={roomData.image_path}
+                        onChange={handleInputChange}
+                        className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                        placeholder="画像のURL"
                     />
                 </div>
                 <div className="mb-4">

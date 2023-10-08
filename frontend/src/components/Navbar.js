@@ -16,7 +16,9 @@ function Navbar() {
         <div className="bg-custom-blue-light text-custom-blue-darkest py-4">
             <div className="container mx-auto">
                 <div className="flex justify-between items-center">
-                    <a href="/" className="text-2xl font-bold hover:underline">黒予約アプリ</a>
+                    <a href="/" className="text-2xl font-bold hover:underline">
+                        黒予約アプリ {isAdmin && "(Admin)"}
+                    </a>
                     <div className="space-x-4">
                         {localStorage.getItem('userInfo') ? (
                             <>
@@ -36,7 +38,7 @@ function Navbar() {
                                 <span className="bg-custom-blue-lighter text-custom-blue-darkest px-3 py-1 rounded-lg shadow-md">
                                     {JSON.parse(localStorage.getItem('userInfo')).email}
                                 </span>
-                                <a href="/logout" onClick={handleLogout} className="transition-colors duration-200 px-4 py-2 rounded bg-red-500 hover:bg-red-400 focus:bg-red-600 focus:outline-none">ログアウト</a>
+                                <a href="/logout" onClick={handleLogout} className="text-white transition-colors duration-200 px-4 py-2 rounded bg-red-500 hover:bg-red-400 focus:bg-red-600 focus:outline-none">ログアウト</a>
                             </>
                         ) : (
                             <>
