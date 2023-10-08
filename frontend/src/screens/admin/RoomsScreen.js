@@ -35,6 +35,11 @@ function HomeScreen() {
                             <p className="mb-1">説明: {room.description}</p>
                             <p className="mb-1">定員: {room.capacity}人</p>
                             <p>1泊あたりの価格: ¥{room.price_per_night}</p>
+                            <button
+                                className="mt-20 w-[100px] bg-red-500 text-white py-2 px-4 rounded hover:bg-red-600"
+                            >
+                                削除
+                            </button>
                         </div>
                     </div>
                 </Link>
