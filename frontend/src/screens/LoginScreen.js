@@ -32,11 +32,11 @@ function LoginScreen() {
     };
 
     return (
-        <div className="flex flex-col h-full items-center bg-custom-blue-lightest text-custom-blue-darker px-6">
+        <div className="flex flex-col h-full items-center bg-custom-orange-lightest text-custom-orange-darker px-6">
             <h1 className="text-4xl mb-4">ログイン</h1>
             <form onSubmit={handleSubmit} className="w-1/2">
                 <div className="mb-4">
-                    <label className="block text-custom-blue-dark text-sm font-bold mb-2" htmlFor="email">
+                    <label className="block text-custom-orange-dark text-sm font-bold mb-2" htmlFor="email">
                         メールアドレス
                     </label>
                     <input
@@ -45,12 +45,12 @@ function LoginScreen() {
                         name="email"
                         value={credentials.email}
                         onChange={handleInputChange}
-                        className="shadow appearance-none border rounded w-full py-2 px-3 text-custom-blue-dark leading-tight focus:outline-none focus:shadow-outline"
+                        className="shadow appearance-none border rounded w-full py-2 px-3 text-custom-orange-dark leading-tight focus:outline-none focus:shadow-outline"
                         placeholder="メールアドレス"
                     />
                 </div>
                 <div className="mb-4">
-                    <label className="block text-custom-blue-dark text-sm font-bold mb-2" htmlFor="password">
+                    <label className="block text-custom-orange-dark text-sm font-bold mb-2" htmlFor="password">
                         パスワード
                     </label>
                     <input
@@ -59,12 +59,12 @@ function LoginScreen() {
                         name="password"
                         value={credentials.password}
                         onChange={handleInputChange}
-                        className="shadow appearance-none border rounded w-full py-2 px-3 text-custom-blue-dark leading-tight focus:outline-none focus:shadow-outline"
+                        className="shadow appearance-none border rounded w-full py-2 px-3 text-custom-orange-dark leading-tight focus:outline-none focus:shadow-outline"
                         placeholder="パスワード"
                     />
                 </div>
                 <div className="flex items-center justify-between">
-                    <button className="bg-custom-blue hover:bg-custom-blue-dark text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">
+                    <button className="bg-custom-orange hover:bg-custom-orange-dark text-custom-orange-lightest font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">
                         ログイン
                     </button>
                 </div>
