@@ -13,7 +13,7 @@ function Navbar() {
     const isAdmin = localStorage.getItem('userInfo') && JSON.parse(localStorage.getItem('userInfo')).admin;
 
     return (
-        <div className="bg-custom-blue-light text-custom-blue-darkest py-4">
+        <div className="bg-custom-orange-lightest text-custom-orange-darker py-4">
             <div className="container mx-auto">
                 <div className="flex justify-between items-center">
                     <a href="/" className="text-2xl font-bold hover:underline">
@@ -24,26 +24,22 @@ function Navbar() {
                             <>
                                 {isAdmin ? (
                                     <>
-                                        <a href="/admin/users" className="transition-colors duration-200 px-4 py-2 text-white rounded bg-custom-blue hover:bg-custom-blue-dark focus:bg-custom-blue-darker focus:outline-none">ユーザー一覧</a>
-                                        <a href="/admin/bookings" className="transition-colors duration-200 px-4 py-2 text-white rounded bg-custom-blue hover:bg-custom-blue-dark focus:bg-custom-blue-darker focus:outline-none">予約一覧</a>
-                                        <a href="/admin/rooms" className="transition-colors duration-200 px-4 py-2 text-white rounded bg-custom-blue hover:bg-custom-blue-dark focus:bg-custom-blue-darker focus:outline-none">部屋一覧</a>
-                                        <a href="/admin/rooms/new" className="transition-colors duration-200 px-4 py-2 text-white rounded bg-custom-blue hover:bg-custom-blue-dark focus:bg-custom-blue-darker focus:outline-none">部屋新規作成</a>
-                                        <a href="/admin/tags" className="transition-colors duration-200 px-4 py-2 text-white rounded bg-custom-blue hover:bg-custom-blue-dark focus:bg-custom-blue-darker focus:outline-none">タグ一覧</a>
-                                        <a href="/admin/tags/new" className="transition-colors duration-200 px-4 py-2 text-white rounded bg-custom-blue hover:bg-custom-blue-dark focus:bg-custom-blue-darker focus:outline-none">タグ新規作成</a>
-
+                                        {["ユーザー一覧", "予約一覧", "部屋一覧", "部屋新規作成", "タグ一覧", "タグ新規作成"].map((text, index) => (
+                                            <a key={index} href={`/admin/${text.replace(" ", "").toLowerCase()}`} className="text-black transition-colors duration-200 px-4 py-2 rounded bg-custom-orange-light hover:bg-custom-orange-dark focus:bg-custom-orange-darker focus:outline-none">{text}</a>
+                                        ))}
                                     </>
                                 ) : (
-                                    <a href="/bookings" className="transition-colors duration-200 px-4 py-2 text-white rounded bg-custom-blue hover:bg-custom-blue-dark focus:bg-custom-blue-darker focus:outline-none">予約一覧</a>
+                                    <a href="/bookings" className="transition-colors duration-200 px-4 py-2 text-black rounded bg-custom-orange-light hover:bg-custom-orange-dark focus:bg-custom-orange-darker focus:outline-none">予約一覧</a>
                                 )}
-                                <span className="bg-custom-blue-lighter text-custom-blue-darkest px-3 py-1 rounded-lg shadow-md">
+                                <span className="bg-custom-orange-lighter text-custom-orange-darkest px-3 py-1 rounded-lg shadow-md">
                                     {JSON.parse(localStorage.getItem('userInfo')).email}
                                 </span>
-                                <a href="/logout" onClick={handleLogout} className="text-white transition-colors duration-200 px-4 py-2 rounded bg-red-500 hover:bg-red-400 focus:bg-red-600 focus:outline-none">ログアウト</a>
+                                <a href="/logout" onClick={handleLogout} className="text-black transition-colors duration-200 px-4 py-2 rounded bg-red-500 hover:bg-red-400 focus:bg-red-600 focus:outline-none">ログアウト</a>
                             </>
                         ) : (
                             <>
-                                <a href="/register" className="transition-colors duration-200 px-4 py-2 rounded bg-custom-blue hover:bg-custom-blue-dark focus:bg-custom-blue-darker focus:outline-none">ユーザー登録</a>
-                                <a href="/login" className="transition-colors duration-200 px-4 py-2 rounded bg-custom-blue hover:bg-custom-blue-dark focus:bg-custom-blue-darker focus:outline-none">ユーザーログイン</a>
+                                <a href="/register" className="transition-colors duration-200 px-4 py-2 rounded bg-custom-orange-light hover:bg-custom-orange-dark focus:bg-custom-orange-darker focus:outline-none">ユーザー登録</a>
+                                <a href="/login" className="transition-colors duration-200 px-4 py-2 rounded bg-custom-orange-light hover:bg-custom-orange-dark focus:bg-custom-orange-darker focus:outline-none">ユーザーログイン</a>
                             </>
                         )}
                     </div>
@@ -51,6 +47,7 @@ function Navbar() {
             </div>
         </div>
     );
+
 }
 
 export default Navbar;
