@@ -23,13 +23,21 @@ function Navbar() {
                                 <div className="absolute right-0 mt-2 w-48 rounded-md shadow-lg">
                                     <div className="rounded-md bg-white shadow-xs">
                                         <a href="/profile" className="block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100">Profile</a>
-
+                                        <a href="/logout" className="px-4 py-2 rounded bg-blue-600 hover:bg-blue-500">ログアウト</a>
                                     </div>
                                 </div>
                             </div>
                         ) : (
                             <>
+                                <a href="/bookings" className="px-4 py-2 rounded bg-blue-600 hover:bg-blue-500">ユーザー一覧</a>
                                 <a href="/bookings" className="px-4 py-2 rounded bg-blue-600 hover:bg-blue-500">予約一覧</a>
+                                <a href="/admin/rooms" className="px-4 py-2 rounded bg-blue-600 hover:bg-blue-500">部屋一覧</a>
+                                <a href="/admin/rooms/new" className="px-4 py-2 rounded bg-blue-600 hover:bg-blue-500">部屋新規作成</a>
+                                <a href="/admin/tags" className="px-4 py-2 rounded bg-blue-600 hover:bg-blue-500">タグ一覧</a>
+                                <a href="/admin/tags/new" className="px-4 py-2 rounded bg-blue-600 hover:bg-blue-500">タグ新規作成</a>
+
+                                <a href="/bookings" className="px-4 py-2 rounded bg-blue-600 hover:bg-blue-500">予約一覧</a>
+
                                 <a href="/register" className="px-4 py-2 rounded bg-blue-600 hover:bg-blue-500">ユーザー登録</a>
                                 <a href="/login" className="px-4 py-2 rounded bg-blue-600 hover:bg-blue-500">ユーザーログイン</a>
                             </>
