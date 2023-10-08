@@ -1,1 +1,0 @@
-rails tailwindcss:build && ./shell/rails_server_p_3000.sh 

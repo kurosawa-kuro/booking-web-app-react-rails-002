@@ -55,7 +55,7 @@ function RoomScreen() {
             <h1 className="text-4xl mb-4">部屋</h1>
             <div className="flex flex-col items-center mb-4 p-4 border rounded bg-white shadow-md w-1/2">
                 <img
-                    src="https://static.amanaimages.com/imgroom/rf_preview640/11014/11014019870.jpg"
+                    src={room.image_path}
                     alt={`部屋 ${room.room_number} ${room.room_type}`}
                     className="w-3/4 h-3/4 object-cover rounded-md mb-3"
                 />
@@ -65,6 +65,14 @@ function RoomScreen() {
                         <p>説明: {room.description}</p>
                         <p>定員: {room.capacity}人</p>
                         <p>1泊あたりの価格: ¥{room.price_per_night}</p>
+                        <div className="mt-2">
+                            <span className="font-semibold">タグ:</span>
+                            {room && room.tags && room.tags.map(tag => (
+                                <span key={tag.id} className="bg-green-200 text-green-800 rounded-full px-2 py-1 ml-2">
+                                    {tag.name}
+                                </span>
+                            ))}
+                        </div>
                     </div>
                     <div className="w-1/2 flex items-center justify-center">
                         <button

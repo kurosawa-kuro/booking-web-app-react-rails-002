@@ -21,7 +21,7 @@ function HomeScreen() {
 
     return (
         <div className="flex flex-col h-full items-center bg-gray-200 text-gray-700 px-6">
-            <h1 className="text-4xl mb-4">部屋一覧</h1>
+            <h1 className="text-4xl mb-4">部屋一覧 By Admin</h1>
             {rooms.map(room => (
                 <Link to={`/room/${room.id}`} key={room.id} className="w-full flex justify-center mb-4">
                     <div className="flex p-4 border rounded bg-white shadow-md w-full md:w-2/3 lg:w-1/2">
@@ -35,6 +35,14 @@ function HomeScreen() {
                             <p className="mb-1">説明: {room.description}</p>
                             <p className="mb-1">定員: {room.capacity}人</p>
                             <p>1泊あたりの価格: ¥{room.price_per_night}</p>
+                            <div className="mt-2">
+                                <span className="font-semibold">タグ:</span>
+                                {room.tags.map(tag => (
+                                    <span key={tag.id} className="bg-green-200 text-green-800 rounded-full px-2 py-1 ml-2">
+                                        {tag.name}
+                                    </span>
+                                ))}
+                            </div>
                         </div>
                     </div>
                 </Link>

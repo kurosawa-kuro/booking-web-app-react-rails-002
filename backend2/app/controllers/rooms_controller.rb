@@ -9,7 +9,7 @@ end
 
   # GET /rooms/1
   def show
-    render json: @room
+    render json: @room.as_json(include: :tags)
   end
 
   # POST /rooms
