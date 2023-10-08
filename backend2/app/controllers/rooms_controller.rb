@@ -5,7 +5,7 @@ class RoomsController < ApplicationController
   def index
     @rooms = Room.all.includes(:tags)
     render json: @rooms.to_json(include: [:tags])
-end
+  end
 
   # GET /rooms/1
   def show
@@ -14,9 +14,14 @@ end
 
   # POST /rooms
   def create
-    @room = Room.new(room_params)
-
+    @room = Room.new(room_params.except(:tag_ids))
     if @room.save
+      # タグIDが提供されている場合、関連するRoomTagレコードを作成します
+      if room_params[:tag_ids].present?
+        room_params[:tag_ids].each do |tag_id|
+          RoomTag.create!(room_id: @room.id, tag_id: tag_id)
+        end
+      end
       render json: @room, status: :created, location: @room
     else
       render json: @room.errors, status: :unprocessable_entity
@@ -45,6 +50,6 @@ end
 
     # Only allow a list of trusted parameters through.
     def room_params
-      params.require(:room).permit(:room_number, :description, :capacity, :price_per_night, :room_type, :image_path)
+      params.require(:room).permit(:room_number, :description, :capacity, :price_per_night, :room_type, :image_path, tag_ids: [])
     end
 end

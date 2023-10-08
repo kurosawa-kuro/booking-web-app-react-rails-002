@@ -37,6 +37,14 @@ function RoomFormScreen() {
         }));
     };
 
+    const handleTagChange = (e) => {
+        const value = Array.from(e.target.selectedOptions, option => parseInt(option.value));
+        setRoomData(prevState => ({
+            ...prevState,
+            tag_ids: value
+        }));
+    };
+
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
@@ -120,6 +128,18 @@ function RoomFormScreen() {
                         className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                         placeholder="部屋のタイプ (例: シングル)"
                     />
+                </div>
+                <div className="mb-4">
+                    <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="tags">
+                        タグ
+                    </label>
+                    <select multiple={true} id="tags" onChange={handleTagChange} className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                        {tags.map(tag => (
+                            <option key={tag.id} value={tag.id}>
+                                {tag.name}
+                            </option>
+                        ))}
+                    </select>
                 </div>
                 <div className="flex items-center justify-between">
                     <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">
