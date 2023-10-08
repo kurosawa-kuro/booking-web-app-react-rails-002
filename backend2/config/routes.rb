@@ -1,10 +1,15 @@
 Rails.application.routes.draw do
-  resources :tags
-  resources :bookings
-  resources :rooms
-  resources :users
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
+  namespace :auth do
+    post 'register', action: 'register'
+    post 'login', action: 'login'
+    delete 'logout', action: 'logout'
+  end
 
-  # Defines the root path route ("/")
-  # root "articles#index"
+  resources :tags
+  resources :rooms
+  resources :users do
+    resources :bookings, only: [:index]
+  end
+
+  resources :bookings, except: [:index]
 end

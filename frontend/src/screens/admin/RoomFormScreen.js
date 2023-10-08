@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
@@ -10,9 +10,24 @@ function RoomFormScreen() {
         price_per_night: 0.0,
         room_type: ""
     });
+    const [tags, setTags] = useState([]);
 
     const baseUrl = 'http://localhost:3001';
     const navigate = useNavigate();
+
+    useEffect(() => {
+        async function fetchTags() {
+            try {
+                const response = await axios.get(`${baseUrl}/tags`);
+                setTags(response.data);
+                console.log('Tags:', response.data);
+            } catch (error) {
+                console.error("Error fetching tags:", error);
+            }
+        }
+
+        fetchTags();
+    }, []);
 
     const handleInputChange = (e) => {
         const { name, value } = e.target;
@@ -50,7 +65,6 @@ function RoomFormScreen() {
                         placeholder="部屋番号"
                     />
                 </div>
-
                 <div className="mb-4">
                     <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="description">
                         説明
@@ -64,7 +78,6 @@ function RoomFormScreen() {
                         placeholder="部屋の説明"
                     />
                 </div>
-
                 <div className="mb-4">
                     <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="capacity">
                         定員
@@ -79,7 +92,6 @@ function RoomFormScreen() {
                         placeholder="定員数"
                     />
                 </div>
-
                 <div className="mb-4">
                     <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="price_per_night">
                         1泊あたりの価格
@@ -95,7 +107,6 @@ function RoomFormScreen() {
                         placeholder="1泊あたりの価格"
                     />
                 </div>
-
                 <div className="mb-4">
                     <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="room_type">
                         部屋のタイプ
@@ -110,7 +121,6 @@ function RoomFormScreen() {
                         placeholder="部屋のタイプ (例: シングル)"
                     />
                 </div>
-
                 <div className="flex items-center justify-between">
                     <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">
                         作成
