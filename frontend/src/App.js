@@ -7,8 +7,8 @@ import AdminRoomsScreen from './screens/admin/RoomsScreen';
 import AdminTagFormScreen from './screens/admin/TagFormScreen.js';
 import AdminTagsScreen from './screens/admin/TagsScreen.js';
 import Navbar from './components/Navbar';
-// import Loginscreen from './Loginscreen';
-// import Registerscreen from './Registerscreen';
+import LoginScreen from './screens/LoginScreen';
+// import RegisterScreen from './screens/RegisterScreen';
 
 function App() {
   return (
@@ -23,8 +23,8 @@ function App() {
           <Route path="/admin/rooms" element={<AdminRoomsScreen />} />
           <Route path="/admin/tags/new" element={<AdminTagFormScreen />} />
           <Route path="/admin/tags" element={<AdminTagsScreen />} />
-          {/* <Route path="/login" element={<Loginscreen />} />
-        <Route path="/register" element={<Registerscreen />} /> */}
+          <Route path="/login" element={<LoginScreen />} />
+          {/* <Route path="/register" element={<RegisterScreen />} /> */}
         </Routes>
       </Router>
     </>
