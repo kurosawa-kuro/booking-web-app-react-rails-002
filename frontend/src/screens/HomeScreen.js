@@ -26,7 +26,7 @@ function HomeScreen() {
                 <Link to={`/room/${room.id}`} key={room.id} className="w-full flex justify-center mb-4">
                     <div className="flex p-4 border rounded bg-white shadow-md w-full md:w-2/3 lg:w-1/2">
                         <img
-                            src="https://static.amanaimages.com/imgroom/rf_preview640/11014/11014019870.jpg"
+                            src={room.image_path}
                             alt={`部屋 ${room.room_number} ${room.room_type}`}
                             className="w-1/3 object-cover rounded-md mr-3"
                         />
