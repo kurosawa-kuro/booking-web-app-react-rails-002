@@ -8,7 +8,8 @@ function RoomFormScreen() {
         description: "",
         capacity: 0,
         price_per_night: 0.0,
-        room_type: ""
+        room_type: "",
+        tag_ids: []
     });
     const [tags, setTags] = useState([]);
 
@@ -20,7 +21,6 @@ function RoomFormScreen() {
             try {
                 const response = await axios.get(`${baseUrl}/tags`);
                 setTags(response.data);
-                console.log('Tags:', response.data);
             } catch (error) {
                 console.error("Error fetching tags:", error);
             }
@@ -37,12 +37,18 @@ function RoomFormScreen() {
         }));
     };
 
-    const handleTagChange = (e) => {
-        const value = Array.from(e.target.selectedOptions, option => parseInt(option.value));
-        setRoomData(prevState => ({
-            ...prevState,
-            tag_ids: value
-        }));
+    const handleTagToggle = (tagId) => {
+        if (roomData.tag_ids.includes(tagId)) {
+            setRoomData(prevState => ({
+                ...prevState,
+                tag_ids: prevState.tag_ids.filter(id => id !== tagId)
+            }));
+        } else {
+            setRoomData(prevState => ({
+                ...prevState,
+                tag_ids: [...prevState.tag_ids, tagId]
+            }));
+        }
     };
 
     const handleSubmit = async (e) => {
@@ -130,16 +136,19 @@ function RoomFormScreen() {
                     />
                 </div>
                 <div className="mb-4">
-                    <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="tags">
+                    <label className="block text-gray-700 text-sm font-bold mb-2">
                         タグ
                     </label>
-                    <select multiple={true} id="tags" onChange={handleTagChange} className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
-                        {tags.map(tag => (
-                            <option key={tag.id} value={tag.id}>
-                                {tag.name}
-                            </option>
-                        ))}
-                    </select>
+                    {tags.map(tag => (
+                        <button
+                            key={tag.id}
+                            type="button"
+                            onClick={() => handleTagToggle(tag.id)}
+                            className={`py-2 px-4 m-2 rounded ${roomData.tag_ids.includes(tag.id) ? 'bg-blue-500' : 'bg-gray-400'}`}
+                        >
+                            {tag.name}
+                        </button>
+                    ))}
                 </div>
                 <div className="flex items-center justify-between">
                     <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">
