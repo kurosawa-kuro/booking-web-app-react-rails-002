@@ -1,46 +1,54 @@
-import React, { useState, useEffect } from 'react';
+// src/screens/admin/TagFormScreen.js
+import React, { useState } from 'react';
 import axios from 'axios';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
-function HomeScreen() {
-    const [rooms, setRooms] = useState([]);
+function TagFormScreen() {
+    const [tagName, setTagName] = useState('');
     const baseUrl = 'http://localhost:3001';
+    const navigate = useNavigate();
 
-    useEffect(() => {
-        async function fetchRooms() {
-            try {
-                const response = await axios.get(`${baseUrl}/rooms`);
-                setRooms(response.data);
-            } catch (error) {
-                console.error("Error fetching rooms:", error);
-            }
+    const handleInputChange = (e) => {
+        setTagName(e.target.value);
+    };
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        try {
+            await axios.post(`${baseUrl}/tags`, { tag: { name: tagName } });
+            navigate('/admin/tags');
+        } catch (error) {
+            console.error("Error creating tag:", error);
         }
-
-        fetchRooms();
-    }, []);
+    };
 
     return (
         <div className="flex flex-col h-full items-center bg-gray-200 text-gray-700 px-6">
-            <h1 className="text-4xl mb-4">部屋一覧</h1>
-            {rooms.map(room => (
-                <Link to={`/room/${room.id}`} key={room.id} className="w-full flex justify-center mb-4">
-                    <div className="flex p-4 border rounded bg-white shadow-md w-full md:w-2/3 lg:w-1/2">
-                        <img
-                            src="https://static.amanaimages.com/imgroom/rf_preview640/11014/11014019870.jpg"
-                            alt={`部屋 ${room.room_number} ${room.room_type}`}
-                            className="w-1/3 object-cover rounded-md mr-3"
-                        />
-                        <div className="w-2/3">
-                            <h2 className="text-xl font-bold mb-2">{room.room_number} - {room.room_type}</h2>
-                            <p className="mb-1">説明: {room.description}</p>
-                            <p className="mb-1">定員: {room.capacity}人</p>
-                            <p>1泊あたりの価格: ¥{room.price_per_night}</p>
-                        </div>
-                    </div>
-                </Link>
-            ))}
+            <h1 className="text-4xl mb-4">新しいタグを追加</h1>
+            <form onSubmit={handleSubmit} className="w-1/2">
+                <div className="mb-4">
+                    <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="tag_name">
+                        タグ名
+                    </label>
+                    <input
+                        type="text"
+                        id="tag_name"
+                        name="tag_name"
+                        value={tagName}
+                        onChange={handleInputChange}
+                        className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                        placeholder="タグ名"
+                    />
+                </div>
+
+                <div className="flex items-center justify-between">
+                    <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">
+                        追加
+                    </button>
+                </div>
+            </form>
         </div>
     );
 }
 
-export default HomeScreen;
+export default TagFormScreen;

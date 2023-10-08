@@ -4,8 +4,8 @@ import RoomScreen from './screens/RoomScreen';
 import BookingsScreen from './screens/BookingsScreen';
 import AdminRoomFormScreen from './screens/admin/RoomFormScreen';
 import AdminRoomsScreen from './screens/admin/RoomsScreen';
-import AdminTagsFormScreen from './screens/admin/AdminTagsFormScreen.js';
-import AdminTagsScreen from './screens/admin/AdminTagsScreen.js';
+import AdminTagFormScreen from './screens/admin/TagFormScreen.js';
+import AdminTagsScreen from './screens/admin/TagsScreen.js';
 import Navbar from './components/Navbar';
 // import Loginscreen from './Loginscreen';
 // import Registerscreen from './Registerscreen';
@@ -21,7 +21,7 @@ function App() {
           <Route path="/bookings" element={<BookingsScreen />} />
           <Route path="/admin/rooms/new" element={<AdminRoomFormScreen />} />
           <Route path="/admin/rooms" element={<AdminRoomsScreen />} />
-          <Route path="/admin/tags/new" element={<AdminTagsFormScreen />} />
+          <Route path="/admin/tags/new" element={<AdminTagFormScreen />} />
           <Route path="/admin/tags" element={<AdminTagsScreen />} />
           {/* <Route path="/login" element={<Loginscreen />} />
         <Route path="/register" element={<Registerscreen />} /> */}
